@@ -72,9 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 20.0),
+          padding: const EdgeInsets.fromLTRB(50.0, 80.0, 50.0, 20.0),
           child: Container(
-            height: 400,
+            height: 440,
             width: double.infinity,
             child: ListView(
               children: <Widget>[
@@ -84,6 +84,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     'assets/logo.png',
                     height: 100,
                     width: 100,
+                  ),
+                ),
+                SizedBox(height: 10.0),
+                Align(
+                  child: Text(
+                    "Juan Tracker",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      color: Color(0xFF7B7676),
+                    ),
                   ),
                 ),
                 SizedBox(height: 30.0),
