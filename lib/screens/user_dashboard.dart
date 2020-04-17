@@ -55,11 +55,11 @@ class _UserDashboardState extends State<UserDashboard> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.email),
+            icon: Icon(Icons.local_hospital),
             title: Text('Relief'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.dashboard),
             title: Text('Update'),
           ),
           BottomNavigationBarItem(
