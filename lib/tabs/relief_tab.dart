@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:juan_tracker/widgets/product_widget.dart';
 
 class ReliefTab extends StatefulWidget {
   const ReliefTab({Key key}) : super(key: key);
@@ -15,53 +16,94 @@ class ReliefTab extends StatefulWidget {
 class _ReliefTabState extends State<ReliefTab> {
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController _mapController;
+  String _mapStyle;
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(14.5311, 121.0213),
+    zoom: 14.0,
   );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
-
-  String _mapStyle;
 
   @override
   void initState() {
     super.initState();
-
     rootBundle.loadString('assets/map_style.txt').then((string) {
       _mapStyle = string;
     });
   }
 
+  String dropdownValue = 'St. Lukes Medical Center BGC';
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Container(
-          height: 400,
-          width: double.infinity,
-          child: GoogleMap(
-            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
-              new Factory<OneSequenceGestureRecognizer>(
-                () => new EagerGestureRecognizer(),
+        Stack(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height / 2 -
+                  kBottomNavigationBarHeight,
+              width: double.infinity,
+              child: GoogleMap(
+                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+                  new Factory<OneSequenceGestureRecognizer>(
+                    () => new EagerGestureRecognizer(),
+                  ),
+                ].toSet(),
+                mapType: MapType.normal,
+                zoomGesturesEnabled: true,
+                initialCameraPosition: _kGooglePlex,
+                onMapCreated: (GoogleMapController controller) {
+                  _mapController = controller;
+                  _controller.complete(controller);
+                  _mapController.setMapStyle(_mapStyle);
+                },
               ),
-            ].toSet(),
-            mapType: MapType.normal,
-            zoomGesturesEnabled: true,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _mapController = controller;
-              _controller.complete(controller);
-              _mapController.setMapStyle(_mapStyle);
-            },
+            ),
+          ],
+        ),
+        Container(
+          height: 50,
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 30,
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("Facility Name"),
+                ),
+              ),
+              Expanded(
+                flex: 70,
+                child: DropdownButton<String>(
+                  value: dropdownValue,
+                  style: TextStyle(color: Colors.deepPurple),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: <String>[
+                    'St. Lukes Medical Center BGC',
+                    'Philippine General Hospital',
+                    'Ospital ng Maynila Medical Center',
+                    'Makati Medical Center'
+                  ].map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
+            ],
           ),
         ),
-        Container(height: 300, color: Colors.black),
+        Container(
+          height: MediaQuery.of(context).size.height / 2 - 70,
+          child: ProductWidget(),
+        ),
       ],
     );
   }

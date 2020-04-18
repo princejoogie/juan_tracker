@@ -65,7 +65,7 @@ class _UpdateTabState extends State<UpdateTab> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.0),
                   Text(
                     confirmed.toString(),
                     style: TextStyle(fontSize: 20),
@@ -138,7 +138,7 @@ class _UpdateTabState extends State<UpdateTab> {
                     child: Container(
                       color: Colors.blueAccent,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text(
                           _countries[index]["name"],
                           style: TextStyle(color: Colors.black, fontSize: 20),
