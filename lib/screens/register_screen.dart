@@ -3,15 +3,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
 import 'package:juan_tracker/screens/facility_dashboard.dart';
-import 'package:juan_tracker/screens/register_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController username = new TextEditingController();
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController facilityName = new TextEditingController();
+  TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
   _showError(String msg) {
@@ -41,12 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<void> _login() async {
-    if (username.text.length <= 0 || password.text.length <= 0) {
+  Future<void> _register() async {
+    if (email.text.length <= 0 ||
+        password.text.length <= 0 ||
+        facilityName.text.length <= 0) {
       _showError("One or more fields are empty.");
     } else {
       var stmt = "http://192.168.1.5/home_buddy_crud/api/login.php?uname=" +
-          username.text.trim() +
+          email.text.trim() +
           "&pw=" +
           password.text.trim();
       final response = await http.get(
@@ -105,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 10.0),
                     Align(
                       child: Text(
-                        "Juan Tracker",
+                        "Register",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 40,
@@ -114,6 +116,36 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 30.0),
+                    Text(
+                      "Facility Name",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFF7B7676),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFdbdbdb),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextField(
+                          controller: facilityName,
+                          keyboardType: TextInputType.emailAddress,
+                          textAlignVertical: TextAlignVertical.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
                     Text(
                       "Email",
                       style: TextStyle(
@@ -130,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
-                          controller: username,
+                          controller: email,
                           keyboardType: TextInputType.emailAddress,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
@@ -187,32 +219,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         disabledTextColor: Colors.black,
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          _login();
+                          _register();
                         },
                         child: Text(
-                          "Login",
-                          style: TextStyle(fontSize: 14.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => RegisterScreen(),
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text(
                           "Register",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
+                          style: TextStyle(fontSize: 14.0),
                         ),
                       ),
                     ),
