@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' show json;
-
-import 'package:juan_tracker/screens/facility_dashboard.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -14,13 +11,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
-  _showError(String msg) {
+  _showError(String title, String msg) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text(title),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -42,31 +39,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> _register() async {
-    if (email.text.length <= 0 ||
-        password.text.length <= 0 ||
-        facilityName.text.length <= 0) {
-      _showError("One or more fields are empty.");
+    if (email.text.trim().length <= 0 ||
+        password.text.trim().length <= 0 ||
+        facilityName.text.trim().length <= 0) {
+      _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "http://192.168.1.5/home_buddy_crud/api/login.php?uname=" +
-          email.text.trim() +
-          "&pw=" +
-          password.text.trim();
-      final response = await http.get(
-        stmt,
-      );
+      var stmt = "http://192.168.1.5/home_buddy_crud/api/register.php";
+      final response = await http.post(stmt, body: {
+        'uname': facilityName.text.trim(),
+        'email': email.text.trim(),
+        'pw': password.text.trim(),
+      });
 
-      var userData = json.decode(response.body);
-      if (userData.length == 0) {
-        _showError("Login Failed.");
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => FacilityDashboard(),
-          ),
-        );
-      }
-      print(response.body);
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      _showError("Response", response.body);
     }
   }
 

@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    if (username.text.length <= 0 || password.text.length <= 0) {
+    if (username.text.trim().length <= 0 || password.text.trim().length <= 0) {
       _showError("One or more fields are empty.");
     } else {
       var stmt = "http://192.168.1.5/home_buddy_crud/api/login.php?uname=" +
