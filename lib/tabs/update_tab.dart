@@ -25,6 +25,7 @@ class _UpdateTabState extends State<UpdateTab> {
     );
 
     Map<String, dynamic> data = jsonDecode(response.body);
+    if (!mounted) return;
     setState(() {
       confirmed = data["confirmed"]["value"];
       recovered = data["recovered"]["value"];
@@ -38,6 +39,7 @@ class _UpdateTabState extends State<UpdateTab> {
     );
 
     Map<String, dynamic> data = jsonDecode(response.body);
+    if (!mounted) return;
     setState(() {
       _countries = data["countries"];
     });
@@ -126,6 +128,7 @@ class _UpdateTabState extends State<UpdateTab> {
                 return GestureDetector(
                   onTap: () {
                     _getUpdate(_countries[index]["iso2"]);
+                    if (!mounted) return;
                     setState(() {
                       currCountry = _countries[index]["name"];
                     });
