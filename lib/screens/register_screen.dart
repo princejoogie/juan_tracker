@@ -44,11 +44,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         facilityName.text.trim().length <= 0) {
       _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "http://192.168.1.5/home_buddy_crud/api/register.php";
+      var stmt = "http://juantracker.000webhostapp.com/register.php";
       final response = await http.post(stmt, body: {
-        'uname': facilityName.text.trim(),
+        'name': facilityName.text.trim(),
         'email': email.text.trim(),
-        'pw': password.text.trim(),
+        'password': password.text.trim(),
       });
 
       print('Response status: ${response.statusCode}');

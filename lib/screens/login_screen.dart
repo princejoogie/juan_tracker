@@ -11,16 +11,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController username = new TextEditingController();
+  TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
-  _showError(String msg) {
+  _showError(String title, String msg) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text(title),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -42,29 +42,18 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    if (username.text.trim().length <= 0 || password.text.trim().length <= 0) {
-      _showError("One or more fields are empty.");
+    if (email.text.trim().length <= 0 || password.text.trim().length <= 0) {
+      _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "http://192.168.1.5/home_buddy_crud/api/login.php?uname=" +
-          username.text.trim() +
-          "&pw=" +
-          password.text.trim();
-      final response = await http.get(
-        stmt,
-      );
+      var stmt = "http://juantracker.000webhostapp.com/login.php";
+      final response = await http.post(stmt, body: {
+        'email': email.text.trim(),
+        'password': password.text.trim(),
+      });
 
-      var userData = json.decode(response.body);
-      if (userData.length == 0) {
-        _showError("Login Failed.");
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => FacilityDashboard(),
-          ),
-        );
-      }
-      print(response.body);
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      _showError("Response", response.body);
     }
   }
 
@@ -130,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
-                          controller: username,
+                          controller: email,
                           keyboardType: TextInputType.emailAddress,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
