@@ -14,6 +14,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
+  bool loading = false;
+
   _showError(String title, String msg) {
     return showDialog<void>(
       context: context,
@@ -70,6 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
         _showError("Error", "Error Connecting");
       }
     }
+    setState(() {
+      loading = false;
+    });
   }
 
   @override
@@ -95,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: EdgeInsets.all(50.0),
               child: Container(
-                width: double.infinity,
                 child: ListView(
                   children: <Widget>[
                     Align(
@@ -177,27 +181,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 40.0),
-                    Container(
-                      width: double.infinity,
-                      height: 40,
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        color: Colors.red,
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {
-                          _login();
-                        },
-                        child: Text(
-                          "Login",
-                          style: TextStyle(fontSize: 14.0),
-                        ),
-                      ),
-                    ),
+                    loading
+                        ? LinearProgressIndicator()
+                        : Container(
+                            width: double.infinity,
+                            height: 40,
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              color: Colors.red,
+                              textColor: Colors.white,
+                              disabledColor: Colors.grey,
+                              disabledTextColor: Colors.black,
+                              splashColor: Colors.blueAccent,
+                              onPressed: () {
+                                setState(() {
+                                  loading = true;
+                                });
+                                _login();
+                              },
+                              child: Text(
+                                "Login",
+                                style: TextStyle(fontSize: 14.0),
+                              ),
+                            ),
+                          ),
                     SizedBox(height: 10.0),
                     GestureDetector(
                       onTap: () {
