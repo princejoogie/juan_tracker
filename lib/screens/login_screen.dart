@@ -45,15 +45,30 @@ class _LoginScreenState extends State<LoginScreen> {
     if (email.text.trim().length <= 0 || password.text.trim().length <= 0) {
       _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "http://juantracker.000webhostapp.com/login.php";
+      var stmt = "https://juantracker.tech/login.php";
       final response = await http.post(stmt, body: {
         'email': email.text.trim(),
         'password': password.text.trim(),
       });
 
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      _showError("Response", response.body);
+      // print('Response status: ${response.statusCode}');
+      // print('Response body: ${response.body}');
+      // _showError("Response", response.body);
+
+      if (response.statusCode == 200) {
+        if (response.body == 'success') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => FacilityDashboard(),
+            ),
+          );
+        } else {
+          _showError("Login Failed", response.body);
+        }
+      } else {
+        _showError("Error", "Error Connecting");
+      }
     }
   }
 
@@ -78,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(50.0),
+              padding: EdgeInsets.all(50.0),
               child: Container(
                 width: double.infinity,
                 child: ListView(
@@ -91,7 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 100,
                       ),
                     ),
-                    SizedBox(height: 10.0),
                     Align(
                       child: Text(
                         "Juan Tracker",
