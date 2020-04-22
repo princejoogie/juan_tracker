@@ -60,13 +60,7 @@ Nakakaramdam ka ba ng mga sumusunod na sintomas?
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                IntroductionScreen(),
-                          ),
-                        );
+                        Navigator.of(context).pushReplacementNamed('/SymptomsScreen');
                       },
                       borderSide: BorderSide(
                         color: Color(0xFF3f9d2f),
@@ -90,7 +84,9 @@ Nakakaramdam ka ba ng mga sumusunod na sintomas?
                           color: Color(0xFFf93324),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed('/SymptomsScreen');
+                      },
                       borderSide: BorderSide(
                         color: Color(0xFFf93324),
                       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:juan_tracker/screening/introduction.dart';
 
 class ScreeningTab extends StatefulWidget {
   const ScreeningTab({Key key}) : super(key: key);
@@ -57,48 +56,20 @@ Hindi ibabahagi ang inyong mga sagot ng walang permiso""",
         Align(
           alignment: Alignment.center,
           child: Container(
-            width: 200,
+            width: 250,
             height: 60,
             child: OutlineButton(
               child: Text(
-                "Sang-ayon",
+                "Simulan",
                 style: TextStyle(
                   color: Color(0xFF3f9d2f),
                 ),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => IntroductionScreen(),
-                  ),
-                );
+                Navigator.of(context).pushNamed('/IntroductionScreen');
               },
               borderSide: BorderSide(
                 color: Color(0xFF3f9d2f),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 10),
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 200,
-            height: 60,
-            child: OutlineButton(
-              child: Text(
-                "Di Sang-ayon",
-                style: TextStyle(
-                  color: Color(0xFFf93324),
-                ),
-              ),
-              onPressed: () {},
-              borderSide: BorderSide(
-                color: Color(0xFFf93324),
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
