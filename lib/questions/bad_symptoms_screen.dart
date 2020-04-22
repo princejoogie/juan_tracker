@@ -23,7 +23,7 @@ class BadSymptomsScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pushReplacementNamed('/PUIScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),
@@ -45,7 +45,7 @@ class BadSymptomsScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pushReplacementNamed('/NotSuspectScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),

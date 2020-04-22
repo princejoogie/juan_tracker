@@ -23,7 +23,7 @@ class HomeIsolationScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pop('');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),

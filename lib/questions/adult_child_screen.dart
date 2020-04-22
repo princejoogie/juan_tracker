@@ -23,7 +23,7 @@ class AdultChildScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pushReplacementNamed('/AdmitScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),
@@ -45,7 +45,7 @@ class AdultChildScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pushReplacementNamed('/HomeIsolationScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),

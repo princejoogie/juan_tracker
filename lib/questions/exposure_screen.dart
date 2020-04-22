@@ -23,7 +23,8 @@ class ExposureScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context)
+                        .pushReplacementNamed('/DayExposedScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),
@@ -45,7 +46,8 @@ class ExposureScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context)
+                        .pushReplacementNamed('/BadSymptomsScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),

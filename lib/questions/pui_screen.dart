@@ -23,7 +23,7 @@ class PUIScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context).pushReplacementNamed('/AdmitScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),
@@ -45,7 +45,8 @@ class PUIScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/symptoms');
+                    Navigator.of(context)
+                        .pushReplacementNamed('/AdultChildScreen');
                   },
                   borderSide: BorderSide(
                     color: Color(0xFF3f9d2f),
