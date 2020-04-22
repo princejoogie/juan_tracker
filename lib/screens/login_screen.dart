@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (email.text.trim().length <= 0 || password.text.trim().length <= 0) {
       _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "https://juantracker.tech/login.php";
+      var stmt = "https://juantracker.tech/api/login.php";
       final response = await http.post(stmt, body: {
         'email': email.text.trim(),
         'password': password.text.trim(),

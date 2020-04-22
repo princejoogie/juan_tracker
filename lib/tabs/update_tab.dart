@@ -36,44 +36,43 @@ class _UpdateTabState extends State<UpdateTab> {
 
   @override
   Widget build(BuildContext context) {
-    return loading
-        ? Center(child: CircularProgressIndicator())
-        : Container(
-            height:
-                MediaQuery.of(context).size.height - kBottomNavigationBarHeight,
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    color: Color(0xFFfa7470),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 10.0),
-                            child: Container(
-                              height: 70,
-                              child: Image.asset('assets/confirmed.png'),
-                            ),
+    return Container(
+      height: MediaQuery.of(context).size.height - kBottomNavigationBarHeight,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Container(
+              width: double.infinity,
+              color: Color(0xFFfa7470),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Container(
+                        height: 70,
+                        child: Image.asset('assets/confirmed.png'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Kumpirmadong Kaso",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
                           ),
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                "Kumpirmadong Kaso",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              SizedBox(height: 10.0),
-                              Text(
+                        SizedBox(height: 10.0),
+                        loading
+                            ? CircularProgressIndicator()
+                            : Text(
                                 confirmed.toString(),
                                 style: TextStyle(
                                   fontSize: 40,
@@ -81,52 +80,54 @@ class _UpdateTabState extends State<UpdateTab> {
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(height: 10.0),
-                              Text(
-                                "+0 ngayon",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                        SizedBox(height: 10.0),
+                        Text(
+                          "+0 ngayon",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    color: Color(0xFFa7e0a5),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 10.0),
-                            child: Container(
-                              height: 70,
-                              child: Image.asset('assets/recovered.png'),
-                            ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              width: double.infinity,
+              color: Color(0xFFa7e0a5),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Container(
+                        height: 70,
+                        child: Image.asset('assets/recovered.png'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Bilang ng mga Gumaling",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
                           ),
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                "Bilang ng mga Gumaling",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              Text(
+                        SizedBox(height: 10),
+                        loading
+                            ? CircularProgressIndicator()
+                            : Text(
                                 recovered.toString(),
                                 style: TextStyle(
                                   fontSize: 40,
@@ -134,53 +135,55 @@ class _UpdateTabState extends State<UpdateTab> {
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(height: 10.0),
-                              Text(
-                                "+0 ngayon",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                        SizedBox(height: 10.0),
+                        Text(
+                          "+0 ngayon",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    color: Color(0xFFc3645f),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Container(
-                                height: 70,
-                                child: Image.asset('assets/death.png'),
-                              ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              width: double.infinity,
+              color: Color(0xFFc3645f),
+              child: Center(
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: Container(
+                          height: 70,
+                          child: Image.asset('assets/death.png'),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Bilang ng mga Namatay",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
                             ),
                           ),
-                          Expanded(
-                            flex: 3,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Bilang ng mga Namatay",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
+                          SizedBox(height: 10),
+                          loading
+                              ? CircularProgressIndicator()
+                              : Text(
                                   deaths.toString(),
                                   style: TextStyle(
                                     fontSize: 40,
@@ -188,24 +191,24 @@ class _UpdateTabState extends State<UpdateTab> {
                                     color: Colors.white,
                                   ),
                                 ),
-                                SizedBox(height: 10.0),
-                                Text(
-                                  "+0 ngayon",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
+                          SizedBox(height: 10.0),
+                          Text(
+                            "+0 ngayon",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 }
