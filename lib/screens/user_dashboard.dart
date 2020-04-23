@@ -36,7 +36,7 @@ class _UserDashboardState extends State<UserDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
+      backgroundColor: Color(0xFFF2F2F2),
       body: PageStorage(
         child: SafeArea(
           child: listScreens[tabIndex],
@@ -45,8 +45,8 @@ class _UserDashboardState extends State<UserDashboard> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         elevation: 10.0,
-        selectedItemColor: Colors.black87,
-        unselectedItemColor: Colors.grey[400],
+        selectedItemColor: Color(0xFFe3863f),
+        unselectedItemColor: Color(0xFFfcb9b8),
         backgroundColor: Color(0xFFFFFFFF),
         currentIndex: tabIndex,
         onTap: (int index) {

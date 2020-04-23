@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' show json;
-
 import 'package:juan_tracker/screens/facility_dashboard.dart';
 import 'package:juan_tracker/screens/register_screen.dart';
 

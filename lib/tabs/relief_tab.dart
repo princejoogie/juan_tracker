@@ -63,6 +63,7 @@ class _ReliefTabState extends State<ReliefTab> {
         ),
         Container(
           height: 50,
+          color: Colors.white,
           child: Row(
             children: <Widget>[
               Expanded(
