@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CallScreen extends StatelessWidget {
   @override
@@ -62,9 +63,7 @@ Base sa iyong mga sintomas kinakailangan mo nang pumunta sa ospital""",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: () => launch("tel://0289426843"),
                       borderSide: BorderSide(
                         color: Color(0xff3f9d2f),
                       ),

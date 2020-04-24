@@ -33,6 +33,7 @@ class _UpdateTabState extends State<UpdateTab> {
     var rest = temp["Countries"] as List;
     for (var i in rest) {
       if (i["Country"] == "Philippines") {
+        if (!mounted) return;
         setState(() {
           recovered = i["TotalRecovered"];
           newRecovered = "+" + i["NewRecovered"].toString();
