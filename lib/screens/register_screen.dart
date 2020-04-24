@@ -44,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         facilityName.text.trim().length <= 0) {
       _showError("Error", "One or more fields are empty.");
     } else {
-      var stmt = "juantracker.tech/register.php";
+      var stmt = "https://juantracker.tech/register.php";
       final response = await http.post(stmt, body: {
         'name': facilityName.text.trim(),
         'email': email.text.trim(),

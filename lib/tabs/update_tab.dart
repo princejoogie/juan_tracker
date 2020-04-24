@@ -13,15 +13,14 @@ class UpdateTab extends StatefulWidget {
 class _UpdateTabState extends State<UpdateTab> {
   var confirmed = 0, recovered = 0, deaths = 0;
   var newConfirmed = "+0", newRecovered = "+0", newDeaths = "+0";
-  var currCountry = "Philippines", countryCode = "PH";
   bool loading = true;
 
   void initState() {
     super.initState();
-    _getUpdate(countryCode);
+    _getUpdate();
   }
 
-  Future<void> _getUpdate(String code) async {
+  Future<void> _getUpdate() async {
     final response = await http.get(
       "https://covid-193.p.rapidapi.com/statistics?country=Philippines",
       headers: {
