@@ -51,10 +51,6 @@ class _LoginScreenState extends State<LoginScreen> {
         'password': password.text.trim(),
       });
 
-      // print('Response status: ${response.statusCode}');
-      // print('Response body: ${response.body}');
-      // _showError("Response", response.body);
-
       if (response.statusCode == 200) {
         if (response.body == 'success') {
           Navigator.push(

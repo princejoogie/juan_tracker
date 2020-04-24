@@ -49,12 +49,6 @@ class _UpdateTabState extends State<UpdateTab> {
       newDeaths = data["response"][0]["deaths"]["new"];
       loading = false;
     });
-    print("Confirmed: " + confirmed.toString());
-    print("New Confirmed: " + newConfirmed);
-    print("Recovered: " + recovered.toString());
-    print("New Recovered:" + newRecovered);
-    print("Deaths: " + deaths.toString());
-    print("New Deaths: " + newDeaths);
   }
 
   @override
