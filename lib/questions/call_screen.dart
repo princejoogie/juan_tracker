@@ -64,6 +64,7 @@ Base sa iyong mga sintomas kinakailangan mo nang pumunta sa ospital""",
                         ),
                       ),
                       onPressed: () => launch("tel://0289426843"),
+                      // onPressed: () => launch("whatsapp://send?phone=0289426843"),
                       borderSide: BorderSide(
                         color: Color(0xff3f9d2f),
                       ),

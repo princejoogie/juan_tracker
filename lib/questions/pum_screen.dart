@@ -4,7 +4,7 @@ class PUMScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFfcb9b8),
+      backgroundColor: Color(0xFFffffff),
       body: SafeArea(
         child: Container(
           height: double.infinity,
